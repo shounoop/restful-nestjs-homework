@@ -11,8 +11,8 @@ import {
   Req,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersService } from '../services/users.service';
-import { CreateUserDto } from '../dtos/CreateUserDto';
+import { UsersService } from './users.service';
+import { CreateUserDto } from './dtos/CreateUserDto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { Response, Request } from 'express';
@@ -72,11 +72,12 @@ export class UsersController {
 
     const jwt = await this.jwtService.signAsync({ id: user.id });
 
-    response.cookie('jwt', jwt, { httpOnly: true });
+    response.cookie('jwt', jwt, {
+      httpOnly: true,
+      maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day (expiresIn)
+    });
 
-    return {
-      message: 'success',
-    };
+    return { message: 'success' };
   }
 
   @Get('user')
@@ -106,8 +107,6 @@ export class UsersController {
   async logout(@Res({ passthrough: true }) response: Response) {
     response.clearCookie('jwt');
 
-    return {
-      message: 'success',
-    };
+    return { message: 'success' };
   }
 }

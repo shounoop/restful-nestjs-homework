@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CreditCard } from './typeorm/entities/CreditCard';
-import { CreditCardsModule } from './credit_cards/credit_cards.module';
-import { UsersModule } from './users/users.module';
-import { TestCrudModule } from './test_crud/test_crud.module';
-import { User } from './typeorm/entities/User';
+import { CreditCard } from 'src/typeorm/entities/CreditCard';
+import { User } from 'src/typeorm/entities/User';
+import { CreditCardsModule } from '../credit_cards/credit_cards.module';
+import { UsersModule } from '../users/users.module';
+import { TestCrudModule } from '../test_crud/test_crud.module';
 
 @Module({
   imports: [

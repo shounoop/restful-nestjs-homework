@@ -6,8 +6,8 @@ import {
   ParseIntPipe,
   Post,
 } from '@nestjs/common';
-import { CreateCreditCardDto } from 'src/credit_cards/dtos/CreateCreditCardDto';
-import { CreditCardsService } from '../services/credit_cards.service';
+import { CreditCardsService } from './credit_cards.service';
+import { CreateCreditCardDto } from './dtos/CreateCreditCardDto';
 
 @Controller('credit-cards')
 export class CreditCardsController {
