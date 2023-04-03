@@ -1,5 +1,5 @@
 import CreditCardType from 'src/shared/types';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 
 @Entity({ name: 'credit_cards' })
@@ -22,8 +22,9 @@ export class CreditCard {
   @Column({ default: false })
   isPaid: boolean;
 
-  @ManyToOne(() => User, (user) => user.creditCards)
-  user: User;
+  // @ManyToOne(() => User, (user) => user.creditCards)
+  // @OneToOne(() => User)
+  // user: User;
 }
 
 // Tên chủ thẻ: username
